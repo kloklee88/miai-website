@@ -1,0 +1,13 @@
+<div style="text-align:center; margin-top: 100px; ">
+    <mat-form-field appearance="fill">
+        <mat-label>Balance Type</mat-label>
+        <mat-select>
+            <mat-option value="option">Random</mat-option>
+            <mat-option value="option">Flash</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <app-player></app-player>
+    <button mat-raised-button color="primary">Submit</button>
+    <button mat-raised-button color="warn" (click)="testConnection()">Test Connection</button>
+    <button mat-raised-button color="accent" (click)="testPerformance(100)">Test Performance</button>
+</div>
