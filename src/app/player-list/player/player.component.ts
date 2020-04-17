@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Player } from './player.model';
 
 @Component({
   selector: 'app-player',
@@ -7,6 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PlayerComponent implements OnInit {
   @Input() roles: String[];
+  @Input() players: Player[];
 
   constructor() { }
 
