@@ -1,8 +1,8 @@
 <div style="text-align:center; margin-top: 100px; ">
     <mat-form-field appearance="fill">
         <mat-label>Balance Type</mat-label>
-        <mat-select [(ngModel)]="balanceOptions">
-            <mat-option *ngFor="let balanceOption of balanceOptions">{{balanceOption}}</mat-option>
+        <mat-select [(ngModel)]="balanceOption">
+            <mat-option *ngFor="let balanceOption of balanceOptions" [value]="balanceOption" name="balanceOption">{{balanceOption}}</mat-option>
         </mat-select>
     </mat-form-field>
     <div fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="32px">

@@ -16,6 +16,7 @@ export class PlayerListComponent implements OnInit {
   balanceOptions: String[];
   roles: String[];
   players: Player[];
+  balanceOption: String;
 
   constructor(private playerService: PlayerService,
     private router: Router,

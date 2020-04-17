@@ -1,15 +1,15 @@
 <mat-card>
     <mat-form-field appearance="fill">
         <mat-label>Player Name</mat-label>
-        <mat-select [(ngModel)]="players">
-            <mat-option *ngFor="let player of players">{{player.name}}</mat-option>
+        <mat-select>
+            <mat-option *ngFor="let player of players; let i = index" [value]="player.name">{{player.name}}</mat-option>
         </mat-select>
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
         <mat-label>Role</mat-label>
-        <mat-select [(ngModel)]="roles">
-            <mat-option *ngFor="let role of roles">{{role}}</mat-option>
+        <mat-select>
+            <mat-option *ngFor="let role of roles; let i = index" [value]="role">{{role}}</mat-option>
         </mat-select>
     </mat-form-field>
 </mat-card>
