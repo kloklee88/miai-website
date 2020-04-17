@@ -10,7 +10,8 @@ import { HeaderComponent } from './header/header.component';
 import { PlayerListComponent } from './player-list/player-list.component';
 import { PlayerComponent } from './player-list/player/player.component';
 
-import { MaterialModule } from './material/material.module'
+import { MaterialModule } from './material/material.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MaterialModule } from './material/material.module'
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

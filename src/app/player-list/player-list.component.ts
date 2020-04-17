@@ -11,16 +11,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class PlayerListComponent implements OnInit {
   subscription: Subscription;
   connectionAvailable: Boolean = false;
-  speedInMs: Number;
+  speedInMs: Number = 0;
 
   constructor(private playerService: PlayerService,
     private router: Router,
     private route: ActivatedRoute) { }
 
     ngOnInit() {
-      this.playerService.testConnection().subscribe(response => {
-        console.log(response);
-      });
     }
   
     onNewPlayer() {

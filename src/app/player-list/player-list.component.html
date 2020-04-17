@@ -2,12 +2,23 @@
     <mat-form-field appearance="fill">
         <mat-label>Balance Type</mat-label>
         <mat-select>
-            <mat-option value="option">Random</mat-option>
-            <mat-option value="option">Flash</mat-option>
+            <mat-option value="Random">Random</mat-option>
+            <mat-option value="Flash">Flash</mat-option>
         </mat-select>
     </mat-form-field>
-    <app-player></app-player>
-    <button mat-raised-button color="primary">Submit</button>
-    <button mat-raised-button color="warn" (click)="testConnection()">Test Connection</button>
-    <button mat-raised-button color="accent" (click)="testPerformance(100)">Test Performance</button>
+    <div fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="32px">
+        <div *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]" fxFlex="0 1 calc(20% - 32px)">
+            <div>Player {{number}}</div>
+            <app-player></app-player>
+        </div>
+    </div>
+    <br><br>
+    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center">
+        <button mat-raised-button color="primary">Submit</button>
+        <button mat-raised-button color="warn" (click)="testConnection()">Test Connection</button>
+        <button mat-raised-button color="accent" (click)="testPerformance(100)">Test Performance</button>
+    </div>
+    <br><br>
+    <div *ngIf="!connectionAvailable">Connection Status: {{connectionAvailable}}</div>
+    <div *ngIf="speedInMs != 0">Performance (ms): {{speedInMs}}</div>
 </div>
