@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PlayerService } from './player-list.service';
 import { Subscription } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -12,12 +12,16 @@ export class PlayerListComponent implements OnInit {
   subscription: Subscription;
   connectionAvailable: Boolean = false;
   speedInMs: Number = 0;
+  balanceOptions: String[];
+  roles: String[];
 
   constructor(private playerService: PlayerService,
     private router: Router,
     private route: ActivatedRoute) { }
 
     ngOnInit() {
+      this.getBalanceOptions();
+      this.getAllRoles();
     }
   
     onNewPlayer() {
@@ -41,6 +45,20 @@ export class PlayerListComponent implements OnInit {
     getAllPlayers() {
       this.playerService.getAllPlayers().subscribe(response => {
         console.log(response);
+      });
+    }
+
+    getBalanceOptions() {
+      this.playerService.getBalanceOptions().subscribe(response => {
+        console.log(response);
+        this.balanceOptions = response;
+      });
+    }
+  
+    getAllRoles() {
+      this.playerService.getAllRoles().subscribe(response => {
+        console.log(response);
+        this.roles = response;
       });
     }
 

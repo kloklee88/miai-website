@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Player } from './player/player.model';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,15 @@ export class PlayerService {
   }
 
   getAllPlayers() {
-    return this.http.get('http://localhost:9010/miai/getallplayers');
+    return this.http.get<Player[]>('http://localhost:9010/miai/getallplayers');
+  }
+
+  getBalanceOptions() {
+    return this.http.get<String[]>('http://localhost:9010/miai/getbalanceoptions');
+  }
+
+  getAllRoles() {
+    return this.http.get<String[]>('http://localhost:9010/miai/getallroles');
   }
 
   getSinglePlayer() {

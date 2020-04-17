@@ -6,9 +6,8 @@
     <br>
     <mat-form-field appearance="fill">
         <mat-label>Role</mat-label>
-        <mat-select>
-            <mat-option value="option">Top</mat-option>
-            <mat-option value="option">Jungle</mat-option>
+        <mat-select [(ngModel)]="roles">
+            <mat-option *ngFor="let role of roles">{{role}}</mat-option>
         </mat-select>
     </mat-form-field>
 </mat-card>
