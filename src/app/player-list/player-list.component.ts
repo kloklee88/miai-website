@@ -43,7 +43,7 @@ export class PlayerListComponent implements OnInit {
         console.log(response);
       });
     }
-  
+
     ngOnDestroy() {
       this.subscription.unsubscribe();
     }
