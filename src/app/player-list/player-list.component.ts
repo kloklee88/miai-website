@@ -24,8 +24,6 @@ export class PlayerListComponent implements OnInit {
 
     ngOnInit() {
       this.getBalanceOptions();
-      this.getAllRoles();
-      this.getAllPlayers();
     }
   
     onNewPlayer() {
@@ -46,27 +44,13 @@ export class PlayerListComponent implements OnInit {
       });
     }
 
-    getAllPlayers() {
-      this.playerService.getAllPlayers().subscribe(response => {
-        console.log(response[0]);
-        this.players = response[0];
-      });
-    }
-
     getBalanceOptions() {
       this.playerService.getBalanceOptions().subscribe(response => {
         console.log(response);
         this.balanceOptions = response;
       });
     }
-  
-    getAllRoles() {
-      this.playerService.getAllRoles().subscribe(response => {
-        console.log(response);
-        this.roles = response;
-      });
-    }
-
+    
     ngOnDestroy() {
       this.subscription.unsubscribe();
     }

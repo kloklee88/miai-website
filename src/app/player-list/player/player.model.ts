@@ -1,5 +1,9 @@
 import { RoleMmr } from './rolemmr.model';
 
+export class PlayerList {
+  public players: Player[];
+}
+
 export class Player {
     public name: String;
     public level: Number;
@@ -10,4 +14,9 @@ export class Player {
     public chosenRoles: String[];
     public useFlashCorrectly: Boolean;
     public lastUpdate: Date;
+
+    constructor() {
+      this.chosenRoles = [];
+      this.chosenRoles.push(new String);
+    }
   }

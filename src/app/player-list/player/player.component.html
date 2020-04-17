@@ -1,15 +1,26 @@
-<mat-card>
-    <mat-form-field appearance="fill">
-        <mat-label>Player Name</mat-label>
-        <mat-select>
-            <mat-option *ngFor="let player of players; let i = index" [value]="player.name">{{player.name}}</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-        <mat-label>Role</mat-label>
-        <mat-select>
-            <mat-option *ngFor="let role of roles; let i = index" [value]="role">{{role}}</mat-option>
-        </mat-select>
-    </mat-form-field>
-</mat-card>
+<div fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="32px">
+    <div *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]; let i = index" fxFlex="0 1 calc(20% - 32px)">
+        <div>Player {{number}}</div>
+        <mat-card>
+            <mat-form-field appearance="fill">
+                <mat-label>Player Name</mat-label>
+                <mat-select [(ngModel)]="chosenPlayers[i].name" name="player{{number}}"
+                    (selectionChange)="playerNameChange()">
+                    <mat-option *ngIf="chosenPlayers[i] === null" [value]="chosenPlayers[i].name">{{chosenPlayers[i].name}}</mat-option>
+                    <mat-option *ngFor="let player of filteredPlayers" [value]="player.name">{{player.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Role</mat-label>
+                <mat-select [(ngModel)]="chosenPlayers[i].chosenRoles[0]" name="role{{number}}">
+                    <mat-option *ngFor="let role of roles" [value]="role">{{role}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </mat-card>
+    </div>
+</div>
+<br><br>
+<div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center">
+    <button mat-raised-button color="primary">Submit</button>
+</div>

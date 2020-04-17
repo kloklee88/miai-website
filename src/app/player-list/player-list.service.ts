@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Player } from './player/player.model';
+import { PlayerList } from './player/player.model';
 
 import { map } from 'rxjs/operators';
 
@@ -25,16 +25,7 @@ export class PlayerService {
   }
 
   getAllPlayers() {
-    return this.http.get<Player[]>('http://localhost:9010/miai/getallplayers').pipe(map(responseData => {
-      const playerArray = [];
-      //console.log(responseData);
-      for (const key in responseData) {
-        if(responseData.hasOwnProperty(key)) {
-          playerArray.push(responseData[key])
-        }
-      }
-      return playerArray;
-    }));
+    return this.http.get<PlayerList>('http://localhost:9010/miai/getallplayers');
   }
 
   getBalanceOptions() {
