@@ -1,7 +1,17 @@
 <mat-toolbar color="primary">
+    <button mat-icon-button>
+        <mat-icon>menu</mat-icon>
+    </button>
+    <h1>Miai</h1>
+    <span class="menu-spacer"></span>
+    <div>
+        <a mat-button [routerLink]="'/about'"> About </a>
+        <a mat-button [routerLink]="'/balance'"> Balance </a>
+        <a mat-button [routerLink]="'/developer'"> Developer Tools </a>
+    </div>
 </mat-toolbar>
-<div  fxLayout="row wrap" fxLayoutAlign="center">
+<div fxLayout="row wrap" fxLayoutAlign="center">
     <a href="#" mat-button routerLink="/">
-        <img src="/assets/img/miai_logo_375_200.png">
+        <img style="height: 120px" src="/assets/img/miai_logo_375_200.png">
     </a>
 </div>

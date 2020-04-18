@@ -1,14 +1,22 @@
-<div style="text-align:center; margin-top: 100px; ">
+<div style="text-align:center; margin-top: 50px; ">
+    <div>
+        <p>The Miai Website will balance 10 players in a custom league of legends game.</p>
+        <p>Miai (見合い) in Go are, in the simplest terms, a pair of vacant points on the board that are equivalent in
+            value. For example, if Black plays at A, White can play at B and suffer no disadvantage from the exchange.
+        </p>
+    </div>
+    <br>
     <mat-form-field appearance="fill">
         <mat-label>Balance Type</mat-label>
         <mat-select [(ngModel)]="balanceOption" name="balanceOption">
-            <mat-option *ngFor="let balanceOption of balanceOptions" [value]="balanceOption" name="balanceOption">{{balanceOption}}</mat-option>
+            <mat-option *ngFor="let balanceOption of balanceOptions" [value]="balanceOption" name="balanceOption">
+                {{balanceOption}}</mat-option>
         </mat-select>
     </mat-form-field>
     <app-player [balanceOption]="balanceOption"></app-player>
     <br><br>
     <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center">
-        <button mat-raised-button color="warn" (click)="testConnection()">Test Connection</button>
+        <button mat-raised-button color="accent" (click)="testConnection()">Test Connection</button>
         <button mat-raised-button color="accent" (click)="testPerformance(100)">Test Performance</button>
     </div>
     <br><br>

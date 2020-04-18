@@ -53,16 +53,30 @@ export class PlayerComponent implements OnInit {
   }
 
   balancePlayers() {
-    console.log("Balance Option: " +this.balanceOption);
+    console.log("Balance Option: " + this.balanceOption);
     let playerList = new PlayerList();
     playerList.players = this.chosenPlayers;
     playerList.balanceOption = this.balanceOption;
-    console.log(playerList);
     console.log(JSON.stringify(playerList));
     this.playerService.balancePlayers(playerList).subscribe(response => {
       console.log(response);
       this.balancedTeam = response;
     });
+  }
+
+  //Temporary to auto set data for testing
+  randomData() {
+    console.log("Randomize Data");
+    for (let i = 0; i < this.chosenPlayers.length; i++) {
+      let player = new Player();
+      let randomPlayerIndex = Math.floor(Math.random() * this.players.length);
+      player.name = this.players[randomPlayerIndex].name;
+      //console.log(player.name);
+      let randomRoleIndex = Math.floor(Math.random() * this.roles.length);
+      player.chosenRoles = [this.roles[randomRoleIndex]];
+      //console.log(player.chosenRoles);
+      this.chosenPlayers[i] = player;
+    }
   }
 
 }

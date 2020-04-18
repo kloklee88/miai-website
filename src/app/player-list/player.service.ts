@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { PlayerList } from './player/player.model';
 
-import { map } from 'rxjs/operators';
 import { BalancedTeam } from './balanced-team.model';
 
 @Injectable({
@@ -42,6 +41,6 @@ export class PlayerService {
   }
 
   balancePlayers(playerList: PlayerList) {
-    return this.http.post<BalancedTeam>('http://localhost:9010/miai/balance', JSON.stringify(playerList), { headers: new HttpHeaders({ 'Content-Type': 'application/json' })});
+    return this.http.post<BalancedTeam>('http://localhost:9010/miai/balance', JSON.stringify(playerList), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
   }
 }

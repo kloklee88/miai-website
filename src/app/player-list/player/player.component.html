@@ -1,7 +1,7 @@
 <div fxLayout="row wrap" fxLayoutAlign="flex-start" fxLayoutGap="32px">
     <div *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]; let i = index" fxFlex="0 1 calc(20% - 32px)">
-        <div>Player {{number}}</div>
         <mat-card>
+            <mat-card-title>Player {{number}}</mat-card-title>
             <mat-form-field appearance="fill">
                 <mat-label>Player Name</mat-label>
                 <mat-select [(ngModel)]="chosenPlayers[i].name" name="player{{number}}"
@@ -23,4 +23,16 @@
 <br><br>
 <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center">
     <button mat-raised-button color="primary" (click)="balancePlayers()">Submit</button>
+    <button mat-raised-button color="warn" (click)="randomData()">Randomize Data</button>
+</div>
+<br><br>
+<div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="100px">
+    <mat-card *ngIf="balancedTeam != null" fxLayout="column" fxLayoutGap="20px">
+        <mat-card-title>Blue Team</mat-card-title>
+        <span *ngFor="let teamMember of balancedTeam.teamOne">{{teamMember.name}}</span>
+    </mat-card>
+    <mat-card *ngIf="balancedTeam != null" fxLayout="column" fxLayoutGap="20px">
+        <mat-card-title>Red Team</mat-card-title>
+        <span *ngFor="let teamMember of balancedTeam.teamTwo">{{teamMember.name}}</span>
+    </mat-card>
 </div>
