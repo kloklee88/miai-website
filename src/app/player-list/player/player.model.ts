@@ -2,6 +2,7 @@ import { RoleMmr } from './rolemmr.model';
 
 export class PlayerList {
   public players: Player[];
+  public balanceOption: String;
 }
 
 export class Player {

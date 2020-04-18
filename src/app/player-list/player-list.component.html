@@ -1,11 +1,11 @@
 <div style="text-align:center; margin-top: 100px; ">
     <mat-form-field appearance="fill">
         <mat-label>Balance Type</mat-label>
-        <mat-select [(ngModel)]="balanceOption">
+        <mat-select [(ngModel)]="balanceOption" name="balanceOption">
             <mat-option *ngFor="let balanceOption of balanceOptions" [value]="balanceOption" name="balanceOption">{{balanceOption}}</mat-option>
         </mat-select>
     </mat-form-field>
-    <app-player></app-player>
+    <app-player [balanceOption]="balanceOption"></app-player>
     <br><br>
     <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center">
         <button mat-raised-button color="warn" (click)="testConnection()">Test Connection</button>

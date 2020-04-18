@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Player } from './player.model';
-import { PlayerService } from '../player-list.service';
+import { Player, PlayerList } from './player.model';
+import { PlayerService } from '../player.service';
 
 import * as _ from 'lodash';
+import { BalancedTeam } from '../balanced-team.model';
 
 @Component({
   selector: 'app-player',
@@ -14,6 +15,8 @@ export class PlayerComponent implements OnInit {
   players: Player[];
   filteredPlayers: Player[] = [];
   chosenPlayers: Player[] = [];
+  balancedTeam: BalancedTeam;
+  @Input() balanceOption: String;
 
   constructor(private playerService: PlayerService) { }
 
@@ -44,9 +47,22 @@ export class PlayerComponent implements OnInit {
   }
 
   playerNameChange() {
-    console.log("Player name change");
+    console.log("Player name change called");
     //Filter out selected player from rest of dropdowns
     //this.filteredPlayers = _.filter(this.players, player => this.chosenPlayers.indexOf(player) > -1)
+  }
+
+  balancePlayers() {
+    console.log("Balance Option: " +this.balanceOption);
+    let playerList = new PlayerList();
+    playerList.players = this.chosenPlayers;
+    playerList.balanceOption = this.balanceOption;
+    console.log(playerList);
+    console.log(JSON.stringify(playerList));
+    this.playerService.balancePlayers(playerList).subscribe(response => {
+      console.log(response);
+      this.balancedTeam = response;
+    });
   }
 
 }
