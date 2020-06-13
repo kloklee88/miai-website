@@ -1,0 +1,9 @@
+<div style="text-align:center; margin-top: 50px; ">
+    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center">
+        <button mat-raised-button color="accent" (click)="testConnection()">Test Connection</button>
+        <button mat-raised-button color="accent" (click)="testPerformance(100)">Test Performance</button>
+    </div>
+    <br><br>
+    <div *ngIf="connectionAvailable != null">Connection Status: {{connectionAvailable}}</div>
+    <div *ngIf="speedInMs != null">Performance (ms): {{speedInMs}}</div>
+</div>

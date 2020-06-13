@@ -1,0 +1,21 @@
+<div style="text-align:center; margin-top: 50px; ">
+    <mat-form-field appearance="fill">
+        <mat-label>Number of Champions</mat-label>
+        <input matInput [(ngModel)]="numberChampions" name="numberChampions">
+    </mat-form-field>
+    <br>
+    <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center">
+        <button mat-raised-button color="accent" (click)="randomizeAram()">Randomize</button>
+    </div>
+    <br><br>
+    <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="100px">
+        <mat-card *ngIf="balancedTeam != null" fxLayout="column" fxLayoutGap="20px">
+            <mat-card-title>Blue Team</mat-card-title>
+            <span *ngFor="let champion of balancedTeam.teamOne">{{champion}}</span>
+        </mat-card>
+        <mat-card *ngIf="balancedTeam != null" fxLayout="column" fxLayoutGap="20px">
+            <mat-card-title>Red Team</mat-card-title>
+            <span *ngFor="let champion of balancedTeam.teamTwo">{{champion}}</span>
+        </mat-card>
+    </div>
+</div>

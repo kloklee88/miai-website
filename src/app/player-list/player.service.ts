@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { PlayerList } from './player/player.model';
 
 import { BalancedTeam } from './balanced-team.model';
+import { BalancedChampion } from '../aram/balanced-champion.model';
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +43,9 @@ export class PlayerService {
 
   balancePlayers(playerList: PlayerList) {
     return this.http.post<BalancedTeam>('http://localhost:9010/miai/balance', JSON.stringify(playerList), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
+  }
+
+  randomizeAram(numberChampions: number) {
+    return this.http.get<BalancedChampion>('http://localhost:9010/miai/aram/' + numberChampions);
   }
 }

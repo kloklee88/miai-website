@@ -12,6 +12,9 @@ import { PlayerComponent } from './player-list/player/player.component';
 
 import { MaterialModule } from './material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AboutComponent } from './about/about.component';
+import { DeveloperToolsComponent } from './developer-tools/developer-tools.component';
+import { AramComponent } from './aram/aram.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     HeaderComponent,
     PlayerListComponent,
     PlayerComponent,
+    AboutComponent,
+    DeveloperToolsComponent,
+    AramComponent,
   ],
   imports: [
     BrowserModule,

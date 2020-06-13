@@ -9,8 +9,6 @@ import { Player } from './player/player.model';
   styleUrls: ['./player-list.component.css']
 })
 export class PlayerListComponent implements OnInit {
-  connectionAvailable: Boolean = false;
-  speedInMs: Number = 0;
   balanceOptions: String[];
   roles: String[];
   players: Player[];
@@ -26,20 +24,6 @@ export class PlayerListComponent implements OnInit {
   
     onNewPlayer() {
       this.router.navigate(['new'], {relativeTo: this.route});
-    }
-
-    testConnection() {
-      this.playerService.testConnection().subscribe(response => {
-        //console.log(response);
-        this.connectionAvailable = response;
-      });
-    }
-
-    testPerformance(iteration: Number) {
-      this.playerService.testPerformance(iteration).subscribe(response => {
-        //console.log(response);
-        this.speedInMs = response;
-      });
     }
 
     getBalanceOptions() {
