@@ -17,15 +17,20 @@ export class DeveloperToolsComponent implements OnInit {
 
   testConnection() {
     this.playerService.testConnection().subscribe(response => {
-      //console.log(response);
+      console.log(response);
       this.connectionAvailable = response;
+    }, error => {
+      console.log(error);
+      this.connectionAvailable = false;
     });
   }
 
   testPerformance(iteration: Number) {
     this.playerService.testPerformance(iteration).subscribe(response => {
-      //console.log(response);
       this.speedInMs = response;
+    }, error => {
+      console.log(error);
+      this.speedInMs = -1;
     });
   }
 
