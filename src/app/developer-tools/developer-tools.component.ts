@@ -20,7 +20,7 @@ export class DeveloperToolsComponent implements OnInit {
       console.log(response);
       this.connectionAvailable = response;
     }, error => {
-      console.log(error);
+      //console.log(error);
       this.connectionAvailable = false;
     });
   }
@@ -29,7 +29,7 @@ export class DeveloperToolsComponent implements OnInit {
     this.playerService.testPerformance(iteration).subscribe(response => {
       this.speedInMs = response;
     }, error => {
-      console.log(error);
+      //console.log(error);
       this.speedInMs = -1;
     });
   }
