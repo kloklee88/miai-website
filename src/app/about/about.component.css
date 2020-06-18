@@ -1,0 +1,13 @@
+.about-div-text {
+    line-height: 1.5;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left !important;
+}
+.about-div {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.about-paragraph {
+    width: 600px;
+}

@@ -1,18 +1,23 @@
 <mat-toolbar color="primary">
-    <button mat-icon-button>
-        <mat-icon>menu</mat-icon>
+    <button mat-button routerLink="/about">
+        <img src='assets/img/miai_logo_only.png' height="35px" width="auto">
+        <span class="header-title">Miai</span>
     </button>
-    <h1 class="header-title">Miai</h1>
     <div class="nav-tools">
-        <a mat-button [routerLink]="'/about'"> About </a>
-        <a mat-button [routerLink]="'/balance'"> Balance Inhouse Team</a>
-        <a mat-button [routerLink]="'/aram'"> Aram Champion Randomizer </a>
-        <a mat-button [routerLink]="'/developer-tools'"> Developer Tools </a>
+        <a mat-button routerLink="/balance">
+            <mat-icon>gamepad</mat-icon>Balance Team
+        </a>
+        <a mat-button routerLink="/aram">
+            <mat-icon>casino</mat-icon>Aram Randomizer
+        </a>
     </div>
     <span class="menu-spacer"></span>
+    <a mat-button routerLink="/developer-tools">
+        <mat-icon>build</mat-icon>Developer Tools
+    </a>
 </mat-toolbar>
 <div fxLayout="row wrap" fxLayoutAlign="center">
     <a href="#" mat-button routerLink="/">
-        <img style="height: 120px" src="/assets/img/miai_logo_375_200.png">
+        <img style="height: 120px" src="assets/img/miai_logo_375_200.png">
     </a>
 </div>
