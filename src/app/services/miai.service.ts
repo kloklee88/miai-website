@@ -4,6 +4,7 @@ import { PlayerList } from '../player-list/player/player.model';
 
 import { BalancedTeam } from '../player-list/balanced-team.model';
 import { BalancedChampion } from '../aram/balanced-champion.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,39 +14,38 @@ export class MiaiService {
   constructor(private http: HttpClient) { }
 
   testConnection() {
-    //return this.http.get('https://inhouse-balancer-service.herokuapp.com/miai/areyouthere');
-    return this.http.get<Boolean>('http://localhost:9010/miai/areyouthere');
+    return this.http.get<Boolean>(environment.miaiServiceUrl + "/miai/areyouthere");
   }
 
   testPerformance(iteration: Number) {
-    return this.http.get<Number>('http://localhost:9010/miai/testperformance/' + iteration);
+    return this.http.get<Number>(environment.miaiServiceUrl + "/miai/testperformance/" + iteration);
   }
 
   getException() {
-    return this.http.get('http://localhost:9010/miai/throwexception');
+    return this.http.get(environment.miaiServiceUrl + "/miai/throwexception");
   }
 
   getAllPlayers() {
-    return this.http.get<PlayerList>('http://localhost:9010/miai/getallplayers');
+    return this.http.get<PlayerList>(environment.miaiServiceUrl + "/miai/getallplayers");
   }
 
   getBalanceOptions() {
-    return this.http.get<String[]>('http://localhost:9010/miai/getbalanceoptions');
+    return this.http.get<String[]>(environment.miaiServiceUrl + "/miai/getbalanceoptions");
   }
 
   getAllRoles() {
-    return this.http.get<String[]>('http://localhost:9010/miai/getallroles');
+    return this.http.get<String[]>(environment.miaiServiceUrl + "/miai/getallroles");
   }
 
-  getSinglePlayer() {
-    return this.http.get('http://localhost:9010/miai/getplayer/Rags/20/RGAPI-8fa0400a-fd4a-41d2-a688-cb9715564a41');
+  getSinglePlayer(name: string, numberRecords: number) {
+    return this.http.get(environment.miaiServiceUrl + "/miai/getplayer/" + name + "/" + numberRecords);
   }
 
   balancePlayers(playerList: PlayerList) {
-    return this.http.post<BalancedTeam>('http://localhost:9010/miai/balance', JSON.stringify(playerList), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
+    return this.http.post<BalancedTeam>(environment.miaiServiceUrl + "/miai/balance", JSON.stringify(playerList), { headers: new HttpHeaders({ "Content-Type": "application/json" }) });
   }
 
   randomizeAram(numberChampions: number) {
-    return this.http.get<BalancedChampion>('http://localhost:9010/miai/aram/' + numberChampions);
+    return this.http.get<BalancedChampion>(environment.miaiServiceUrl + "/miai/aram/" + numberChampions);
   }
 }
