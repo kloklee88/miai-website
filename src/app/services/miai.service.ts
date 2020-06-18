@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { PlayerList } from './player/player.model';
+import { PlayerList } from '../player-list/player/player.model';
 
-import { BalancedTeam } from './balanced-team.model';
+import { BalancedTeam } from '../player-list/balanced-team.model';
 import { BalancedChampion } from '../aram/balanced-champion.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PlayerService {
+export class MiaiService {
 
   constructor(private http: HttpClient) { }
 

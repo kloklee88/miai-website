@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PlayerService } from '../player-list/player.service';
+import { MiaiService } from '../services/miai.service';
 
 @Component({
   selector: 'app-developer-tools',
@@ -10,13 +10,13 @@ export class DeveloperToolsComponent implements OnInit {
   connectionAvailable: Boolean = null;
   speedInMs: Number = null;
 
-  constructor(private playerService: PlayerService) { }
+  constructor(private miaiService: MiaiService) { }
 
   ngOnInit(): void {
   }
 
   testConnection() {
-    this.playerService.testConnection().subscribe(response => {
+    this.miaiService.testConnection().subscribe(response => {
       console.log(response);
       this.connectionAvailable = response;
     }, error => {
@@ -26,7 +26,7 @@ export class DeveloperToolsComponent implements OnInit {
   }
 
   testPerformance(iteration: Number) {
-    this.playerService.testPerformance(iteration).subscribe(response => {
+    this.miaiService.testPerformance(iteration).subscribe(response => {
       this.speedInMs = response;
     }, error => {
       //console.log(error);

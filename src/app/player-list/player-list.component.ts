@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PlayerService } from './player.service';
+import { MiaiService } from '../services/miai.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Player } from './player/player.model';
 
@@ -14,7 +14,7 @@ export class PlayerListComponent implements OnInit {
   players: Player[];
   balanceOption: String;
 
-  constructor(private playerService: PlayerService,
+  constructor(private miaiService: MiaiService,
     private router: Router,
     private route: ActivatedRoute) { }
 
@@ -27,7 +27,7 @@ export class PlayerListComponent implements OnInit {
     }
 
     getBalanceOptions() {
-      this.playerService.getBalanceOptions().subscribe(response => {
+      this.miaiService.getBalanceOptions().subscribe(response => {
         //console.log(response);
         this.balanceOptions = response;
       });

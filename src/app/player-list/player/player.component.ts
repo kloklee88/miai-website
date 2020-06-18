@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Player, PlayerList } from './player.model';
-import { PlayerService } from '../player.service';
+import { MiaiService } from '../../services/miai.service';
 
 import * as _ from 'lodash';
 import { BalancedTeam } from '../balanced-team.model';
@@ -18,7 +18,7 @@ export class PlayerComponent implements OnInit {
   balancedTeam: BalancedTeam;
   @Input() balanceOption: String;
 
-  constructor(private playerService: PlayerService) { }
+  constructor(private miaiService: MiaiService) { }
 
   ngOnInit(): void {
     this.initChosenPlayers();
@@ -27,14 +27,14 @@ export class PlayerComponent implements OnInit {
   }
 
   getAllPlayers() {
-    this.playerService.getAllPlayers().subscribe(response => {
+    this.miaiService.getAllPlayers().subscribe(response => {
       this.players = response.players;
       this.filteredPlayers = response.players;
     });
   }
 
   getAllRoles() {
-    this.playerService.getAllRoles().subscribe(response => {
+    this.miaiService.getAllRoles().subscribe(response => {
       //console.log(response);
       this.roles = response;
     });
@@ -58,7 +58,7 @@ export class PlayerComponent implements OnInit {
     playerList.players = this.chosenPlayers;
     playerList.balanceOption = this.balanceOption;
     console.log(JSON.stringify(playerList));
-    this.playerService.balancePlayers(playerList).subscribe(response => {
+    this.miaiService.balancePlayers(playerList).subscribe(response => {
       console.log(response);
       this.balancedTeam = response;
     });
