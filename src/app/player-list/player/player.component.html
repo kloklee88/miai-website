@@ -5,15 +5,17 @@
             <mat-form-field appearance="fill">
                 <mat-label>Player Name</mat-label>
                 <mat-select [(ngModel)]="chosenPlayers[i].name" name="player{{number}}"
-                    (selectionChange)="playerNameChange()">
-                    <mat-option *ngIf="chosenPlayers[i] === null" [value]="chosenPlayers[i].name">{{chosenPlayers[i].name}}</mat-option>
-                    <mat-option *ngFor="let player of filteredPlayers" [value]="player.name">{{player.name}}</mat-option>
+                    (selectionChange)="playerNameChange()" required>
+                    <mat-option *ngIf="chosenPlayers[i] === null" [value]="chosenPlayers[i].name">
+                        {{chosenPlayers[i].name}}</mat-option>
+                    <mat-option *ngFor="let player of filteredPlayers" [value]="player.name">{{player.name}}
+                    </mat-option>
                 </mat-select>
             </mat-form-field>
             <br>
             <mat-form-field appearance="fill">
                 <mat-label>Role</mat-label>
-                <mat-select [(ngModel)]="chosenPlayers[i].chosenRoles[0]" name="role{{number}}">
+                <mat-select [(ngModel)]="chosenPlayers[i].chosenRoles[0]" name="role{{number}}" required>
                     <mat-option *ngFor="let role of roles" [value]="role">{{role}}</mat-option>
                 </mat-select>
             </mat-form-field>
@@ -21,9 +23,14 @@
     </div>
 </div>
 <br><br>
-<div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center">
-    <button mat-raised-button color="primary" (click)="balancePlayers()">Submit</button>
-    <button mat-raised-button color="warn" (click)="randomData()">Randomize Data</button>
+<div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="center">
+    <div style="color:red;" *ngIf="invalidForm">
+        Please
+        complete the required form fields</div>
+    <div fxLayoutGap="20px">
+        <button mat-raised-button color="primary" (click)="balancePlayers()">Submit</button>
+        <button mat-raised-button color="warn" (click)="randomData()">Randomize Data</button>
+    </div>
 </div>
 <br><br>
 <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="100px">

@@ -16,6 +16,7 @@ export class PlayerComponent implements OnInit {
   filteredPlayers: Player[] = [];
   chosenPlayers: Player[] = [];
   balancedTeam: BalancedTeam;
+  invalidForm: boolean = false;
   @Input() balanceOption: String;
 
   constructor(private miaiService: MiaiService) { }
@@ -53,15 +54,28 @@ export class PlayerComponent implements OnInit {
   }
 
   balancePlayers() {
-    console.log("Balance Option: " + this.balanceOption);
-    let playerList = new PlayerList();
-    playerList.players = this.chosenPlayers;
-    playerList.balanceOption = this.balanceOption;
-    console.log(JSON.stringify(playerList));
-    this.miaiService.balancePlayers(playerList).subscribe(response => {
-      console.log(response);
-      this.balancedTeam = response;
-    });
+    //console.log("Balance Option: " + this.balanceOption);
+    let playersPopulated = true;
+    for (let i = 0; i < this.chosenPlayers.length; i++) {
+      if (this.chosenPlayers[i].name === undefined || this.chosenPlayers[i].chosenRoles[0].length === 0) {
+        //console.log("Balance form is invalid")
+        playersPopulated = false;
+        break;
+      }
+    }
+    if (playersPopulated && this.balanceOption != null) {
+      this.invalidForm = false;
+      let playerList = new PlayerList();
+      playerList.players = this.chosenPlayers;
+      playerList.balanceOption = this.balanceOption;
+      console.log(JSON.stringify(playerList));
+      this.miaiService.balancePlayers(playerList).subscribe(response => {
+        //console.log(response);
+        this.balancedTeam = response;
+      });
+    } else {
+      this.invalidForm = true;
+    }
   }
 
   //Temporary to auto set data for testing
