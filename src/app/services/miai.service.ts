@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { PlayerList } from '../player-list/player/player.model';
+import { PlayerList, Player } from '../player-list/player/player.model';
 
 import { BalancedTeam } from '../player-list/balanced-team.model';
 import { BalancedChampion } from '../aram/balanced-champion.model';
@@ -38,7 +38,7 @@ export class MiaiService {
   }
 
   getSinglePlayer(name: string, numberRecords: number) {
-    return this.http.get(environment.miaiServiceUrl + "/miai/getplayer/" + name + "/" + numberRecords);
+    return this.http.get<Player>(environment.miaiServiceUrl + "/miai/getplayer/" + name + "/" + numberRecords);
   }
 
   balancePlayers(playerList: PlayerList) {
