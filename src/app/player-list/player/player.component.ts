@@ -83,12 +83,14 @@ export class PlayerComponent implements OnInit {
     console.log("Randomize Data");
     for (let i = 0; i < this.chosenPlayers.length; i++) {
       let player = new Player();
-      let randomPlayerIndex = Math.floor(Math.random() * this.players.length);
+      let randomPlayerIndex;
+      //Make unique random player names
+      do {
+        randomPlayerIndex = Math.floor(Math.random() * this.players.length);
+      } while (this.chosenPlayers.some(e => e.name === this.players[randomPlayerIndex].name))
       player.name = this.players[randomPlayerIndex].name;
-      //console.log(player.name);
       let randomRoleIndex = Math.floor(Math.random() * this.roles.length);
       player.chosenRoles = [this.roles[randomRoleIndex]];
-      //console.log(player.chosenRoles);
       this.chosenPlayers[i] = player;
     }
   }
