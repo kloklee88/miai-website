@@ -1,7 +1,9 @@
 <div style="text-align:center; margin-top: 50px; ">
+    <div style="color:red;" *ngIf="invalidForm">Please
+        complete the required form fields</div>
     <mat-form-field appearance="fill">
         <mat-label>Number of Champions</mat-label>
-        <input matInput [(ngModel)]="numberChampions" name="numberChampions">
+        <input matInput [(ngModel)]="numberChampions" name="numberChampions" required>
     </mat-form-field>
     <br>
     <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center">

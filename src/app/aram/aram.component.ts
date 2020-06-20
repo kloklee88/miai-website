@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MiaiService } from '../services/miai.service';
 import { BalancedChampion } from './balanced-champion.model';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-aram',
@@ -10,6 +11,7 @@ import { BalancedChampion } from './balanced-champion.model';
 export class AramComponent implements OnInit {
   balancedTeam: BalancedChampion;
   numberChampions: number;
+  invalidForm: boolean = false;
 
   constructor(private miaiService: MiaiService) { }
 
@@ -17,10 +19,16 @@ export class AramComponent implements OnInit {
   }
 
   randomizeAram() {
-    this.miaiService.randomizeAram(this.numberChampions*2).subscribe(response => {
-      this.balancedTeam = response;
-      console.log(this.balancedTeam);
-    });
+    console.log(this.numberChampions);
+    if (this.numberChampions !== undefined) {
+      this.invalidForm = false;
+      this.miaiService.randomizeAram(this.numberChampions * 2).subscribe(response => {
+        this.balancedTeam = response;
+        console.log(this.balancedTeam);
+      });
+    } else {
+      this.invalidForm = true;
+    }
   }
 
 }
