@@ -1,4 +1,12 @@
-# MiaiWebsite
+# Miai Website
+
+## Core functionality
+
+- Aram Randominizer: Randominly provides a desired number of champions for either team to choose from
+- Balance Team: Given 10 players and their desired roles with a balance type, the feature sorts players into two even teams
+- Developer Tools: Check status and performance to Miai service; also can pull down single player information from Riot into DB
+
+## Angular Build Info
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
 
