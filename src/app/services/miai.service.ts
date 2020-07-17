@@ -37,8 +37,8 @@ export class MiaiService {
     return this.http.get<String[]>(environment.miaiServiceUrl + "/miai/getallroles");
   }
 
-  getSinglePlayer(name: string, numberRecords: number) {
-    return this.http.get<Player>(environment.miaiServiceUrl + "/miai/getplayer/" + name + "/" + numberRecords);
+  getSinglePlayer(name: string) {
+    return this.http.get<Player>(environment.miaiServiceUrl + "/miai/getplayer/" + name);
   }
 
   balancePlayers(playerList: PlayerList) {

@@ -11,7 +11,6 @@ export class DeveloperToolsComponent implements OnInit {
   connectionAvailable: Boolean = null;
   speedInMs: Number = null;
   playerName: string;
-  numberRecords: number = 20;
   playerResponse: Player = null;
 
   constructor(private miaiService: MiaiService) { }
@@ -22,7 +21,7 @@ export class DeveloperToolsComponent implements OnInit {
   getPlayer() {
     this.playerResponse = null;
     if (this.playerName !== undefined) {
-      this.miaiService.getSinglePlayer(this.playerName, this.numberRecords).subscribe(response => {
+      this.miaiService.getSinglePlayer(this.playerName).subscribe(response => {
         console.log(response);
         this.playerResponse = response;
       });
