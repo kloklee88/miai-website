@@ -30,16 +30,18 @@
     <div fxLayoutGap="20px">
         <button mat-raised-button color="primary" (click)="balancePlayers()">Submit</button>
         <button mat-raised-button color="warn" (click)="randomData()">Randomize Data</button>
+        <app-mat-spinner-overlay *ngIf="loading" overlay="true">
+        </app-mat-spinner-overlay>
     </div>
 </div>
 <br><br>
 <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="100px">
     <mat-card *ngIf="balancedTeam != null" fxLayout="column" fxLayoutGap="20px">
-        <mat-card-title>Blue Team</mat-card-title>
-        <span *ngFor="let teamMember of balancedTeam.teamOne">{{teamMember.name}}</span>
+        <mat-card-title>Blue Team/Team 1</mat-card-title>
+        <span *ngFor="let teamMember of balancedTeam.teamOne">{{teamMember.name}}<span *ngIf="teamMember.chosenRoles[0] != null"> - {{teamMember.chosenRoles[0]}}</span></span>
     </mat-card>
     <mat-card *ngIf="balancedTeam != null" fxLayout="column" fxLayoutGap="20px">
-        <mat-card-title>Red Team</mat-card-title>
-        <span *ngFor="let teamMember of balancedTeam.teamTwo">{{teamMember.name}}</span>
+        <mat-card-title>Red Team/Team 2</mat-card-title>
+        <span *ngFor="let teamMember of balancedTeam.teamTwo">{{teamMember.name}}<span *ngIf="teamMember.chosenRoles[0] != null"> - {{teamMember.chosenRoles[0]}}</span></span>
     </mat-card>
 </div>

@@ -8,15 +8,17 @@
     <br>
     <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center">
         <button mat-raised-button color="accent" (click)="randomizeAram()">Randomize</button>
+        <app-mat-spinner-overlay *ngIf="loading" overlay="true">
+        </app-mat-spinner-overlay>
     </div>
     <br><br>
     <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="100px">
         <mat-card *ngIf="balancedTeam != null" fxLayout="column" fxLayoutGap="20px">
-            <mat-card-title>Blue Team</mat-card-title>
+            <mat-card-title>Blue Team/Team 1</mat-card-title>
             <span *ngFor="let champion of balancedTeam.teamOne">{{champion}}</span>
         </mat-card>
         <mat-card *ngIf="balancedTeam != null" fxLayout="column" fxLayoutGap="20px">
-            <mat-card-title>Red Team</mat-card-title>
+            <mat-card-title>Red Team/Team 2</mat-card-title>
             <span *ngFor="let champion of balancedTeam.teamTwo">{{champion}}</span>
         </mat-card>
     </div>

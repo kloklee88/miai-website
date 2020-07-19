@@ -11,6 +11,7 @@ import { FormControl } from '@angular/forms';
 export class AramComponent implements OnInit {
   balancedTeam: BalancedChampion;
   numberChampions: number;
+  loading: boolean = false;
   invalidForm: boolean = false;
 
   constructor(private miaiService: MiaiService) { }
@@ -22,9 +23,11 @@ export class AramComponent implements OnInit {
     console.log(this.numberChampions);
     if (this.numberChampions !== undefined) {
       this.invalidForm = false;
+      this.loading = true;
       this.miaiService.randomizeAram(this.numberChampions * 2).subscribe(response => {
         this.balancedTeam = response;
         console.log(this.balancedTeam);
+        this.loading = false;
       });
     } else {
       this.invalidForm = true;

@@ -18,6 +18,5 @@ export class Player {
 
     constructor() {
       this.chosenRoles = [];
-      this.chosenRoles.push(new String);
     }
   }

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { AboutComponent } from './about/about.component';
 import { DeveloperToolsComponent } from './developer-tools/developer-tools.component';
 import { AramComponent } from './aram/aram.component';
 import { InterceptorService } from './services/interceptor.service';
+import { MatSpinnerOverlayComponent } from './mat-spinner-overlay/mat-spinner-overlay.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { InterceptorService } from './services/interceptor.service';
     AboutComponent,
     DeveloperToolsComponent,
     AramComponent,
+    MatSpinnerOverlayComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { InterceptorService } from './services/interceptor.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    BrowserAnimationsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

@@ -17,6 +17,7 @@ export class PlayerComponent implements OnInit {
   chosenPlayers: Player[] = [];
   balancedTeam: BalancedTeam;
   invalidForm: boolean = false;
+  loading: boolean = false;
   @Input() balanceOption: String;
 
   constructor(private miaiService: MiaiService) { }
@@ -65,13 +66,15 @@ export class PlayerComponent implements OnInit {
     }
     if (playersPopulated && this.balanceOption != null) {
       this.invalidForm = false;
+      this.loading = true;
       let playerList = new PlayerList();
       playerList.players = this.chosenPlayers;
       playerList.balanceOption = this.balanceOption;
       console.log(JSON.stringify(playerList));
       this.miaiService.balancePlayers(playerList).subscribe(response => {
-        //console.log(response);
+        console.log(response);
         this.balancedTeam = response;
+        this.loading = false;
       });
     } else {
       this.invalidForm = true;
@@ -90,7 +93,7 @@ export class PlayerComponent implements OnInit {
       } while (this.chosenPlayers.some(e => e.name === this.players[randomPlayerIndex].name))
       player.name = this.players[randomPlayerIndex].name;
       let randomRoleIndex = Math.floor(Math.random() * this.roles.length);
-      player.chosenRoles = [this.roles[randomRoleIndex]];
+      //player.chosenRoles = [this.roles[randomRoleIndex]];
       this.chosenPlayers[i] = player;
     }
   }
