@@ -4,18 +4,29 @@
             <mat-card-title>Player {{number}}</mat-card-title>
             <mat-form-field appearance="fill">
                 <mat-label>Player Name</mat-label>
-                <mat-select [(ngModel)]="chosenPlayers[i].name" name="player{{number}}"
+                <!-- <mat-select [(ngModel)]="chosenPlayers[i].name" name="player{{number}}"
                     (selectionChange)="playerNameChange()" required>
                     <mat-option *ngIf="chosenPlayers[i] === null" [value]="chosenPlayers[i].name">
                         {{chosenPlayers[i].name}}</mat-option>
                     <mat-option *ngFor="let player of filteredPlayers" [value]="player.name">{{player.name}}
                     </mat-option>
-                </mat-select>
+                </mat-select> -->
+                <input type="text"
+                    matInput
+                    [(ngModel)]="chosenPlayers[i].name" name="player{{number}}"
+                    [formControl]="playerControl"
+                    [matAutocomplete]="auto"
+                    (focus)="setupFilter()">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name">
+                        {{option.name}}
+                    </mat-option>
+                </mat-autocomplete>
             </mat-form-field>
             <br>
             <mat-form-field appearance="fill">
                 <mat-label>Role</mat-label>
-                <mat-select [(ngModel)]="chosenPlayers[i].chosenRoles[0]" name="role{{number}}">
+                <mat-select [(ngModel)]="chosenPlayers[i].chosenRoles[0]" name="role{{number}}" multiple>
                     <mat-option *ngFor="let role of roles" [value]="role">{{role}}</mat-option>
                 </mat-select>
             </mat-form-field>
