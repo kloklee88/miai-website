@@ -41,7 +41,7 @@
         <span *ngFor="let teamMember of balancedTeam.teamOne">{{teamMember.name}}<span
                 *ngIf="teamMember.chosenRoles[0] != null"> - {{teamMember.chosenRoles[0]}}</span>
             <span *ngFor="let roleMmr of teamMember.roleMmrs">
-                <span *ngIf="roleMmr.role == teamMember.chosenRoles[0]">({{roleMmr.winRate | percent}})</span></span>
+                <span *ngIf="roleMmr.role == teamMember.chosenRoles[0]">({{roleMmr.winRate | percent: '1.1-4'}})</span></span>
         </span>
     </mat-card>
     <mat-card *ngIf="balancedTeam != null" fxLayout="column" fxLayoutGap="20px">
@@ -49,7 +49,7 @@
         <span *ngFor="let teamMember of balancedTeam.teamTwo">{{teamMember.name}}<span
                 *ngIf="teamMember.chosenRoles[0] != null"> - {{teamMember.chosenRoles[0]}}</span>
             <span *ngFor="let roleMmr of teamMember.roleMmrs">
-                <span *ngIf="roleMmr.role == teamMember.chosenRoles[0]">({{roleMmr.winRate | percent}})</span></span>
+                <span *ngIf="roleMmr.role == teamMember.chosenRoles[0]">({{roleMmr.winRate | percent: '1.1-4'}})</span></span>
         </span>
     </mat-card>
 </div>
