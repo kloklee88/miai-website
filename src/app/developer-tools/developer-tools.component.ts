@@ -18,7 +18,7 @@ export class DeveloperToolsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getPlayer() {
+  updatePlayer() {
     this.playerResponse = null;
     if (this.playerName !== undefined) {
       this.miaiService.updatePlayer(this.playerName).subscribe(response => {
