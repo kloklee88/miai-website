@@ -21,7 +21,7 @@ export class DeveloperToolsComponent implements OnInit {
   getPlayer() {
     this.playerResponse = null;
     if (this.playerName !== undefined) {
-      this.miaiService.getSinglePlayer(this.playerName).subscribe(response => {
+      this.miaiService.updatePlayer(this.playerName).subscribe(response => {
         console.log(response);
         this.playerResponse = response;
       });
