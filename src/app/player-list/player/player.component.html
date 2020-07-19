@@ -15,7 +15,7 @@
             <br>
             <mat-form-field appearance="fill">
                 <mat-label>Role</mat-label>
-                <mat-select [(ngModel)]="chosenPlayers[i].chosenRoles[0]" name="role{{number}}" required>
+                <mat-select [(ngModel)]="chosenPlayers[i].chosenRoles[0]" name="role{{number}}">
                     <mat-option *ngFor="let role of roles" [value]="role">{{role}}</mat-option>
                 </mat-select>
             </mat-form-field>

@@ -57,7 +57,7 @@ export class PlayerComponent implements OnInit {
     //console.log("Balance Option: " + this.balanceOption);
     let playersPopulated = true;
     for (let i = 0; i < this.chosenPlayers.length; i++) {
-      if (this.chosenPlayers[i].name === undefined || this.chosenPlayers[i].chosenRoles[0].length === 0) {
+      if (this.chosenPlayers[i].name === undefined) {
         //console.log("Balance form is invalid")
         playersPopulated = false;
         break;
